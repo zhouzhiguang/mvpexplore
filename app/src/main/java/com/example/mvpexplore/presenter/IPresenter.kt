@@ -1,6 +1,7 @@
 package com.example.mvpexplore.presenter
 
 import android.content.Context
+import androidx.lifecycle.MutableLiveData
 import com.example.mvpexplore.modle.User
 
 /**
@@ -11,5 +12,5 @@ import com.example.mvpexplore.modle.User
  */
 interface IPresenter {
 
-    fun doLogin(context: Context): User?
+    fun doLogin(context: Context): MutableLiveData<User>?
 }

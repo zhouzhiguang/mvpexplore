@@ -1,7 +1,10 @@
 package com.example.mvpexplore
 
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.Observer
+import com.example.mvpexplore.modle.User
 import com.example.mvpexplore.presenter.IPresenter
 import com.example.mvpexplore.presenter.MvpPresenter
 import com.example.mvpexplore.view.IView
@@ -23,7 +26,15 @@ class MainActivity : AppCompatActivity(), IView by MvpView() {
         super.onCreate(savedInstanceState)
         setContentView(getlayoutID())
         text.setOnClickListener {
-            getPresenter<MvpPresenter>().doLogin(this)
+            var user = getPresenter<MvpPresenter>().doLogin(this)
+            user.observe(this,object :Observer<User>{
+                override fun onChanged(t: User?) {
+
+                    Log.e("查看返回值" , t.toString())
+                }
+
+            })
+
             showLog()
 
         }
