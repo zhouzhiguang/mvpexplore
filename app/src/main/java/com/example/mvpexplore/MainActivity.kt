@@ -9,6 +9,7 @@ import com.example.mvpexplore.presenter.IPresenter
 import com.example.mvpexplore.presenter.MvpPresenter
 import com.example.mvpexplore.view.IView
 import com.example.mvpexplore.view.MvpView
+
 import kotlinx.android.synthetic.main.activity_main.*
 
 //第一种继承baseactivity
@@ -27,10 +28,13 @@ class MainActivity : AppCompatActivity(), IView by MvpView() {
         setContentView(getlayoutID())
         text.setOnClickListener {
             var user = getPresenter<MvpPresenter>().doLogin(this)
-            user.observe(this,object :Observer<User>{
+            user.observe(this, object : Observer<User> {
                 override fun onChanged(t: User?) {
 
-                    Log.e("查看返回值" , t.toString())
+//                    t!!.save()
+//                    var list = User().queryAll()
+                    Log.e("查看返回值", t.toString())
+
                 }
 
             })

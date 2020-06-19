@@ -16,8 +16,10 @@ class MvpPresenter : IPresenter {
     override fun doLogin(context: Context): MutableLiveData<User> {
         val result: MutableLiveData<User> =
             MutableLiveData<User>()
-        Toast.makeText(context, "吐司了", Toast.LENGTH_SHORT).show()
-        var user = User(1, "小明同学")
+        Toast.makeText(context, "请求成功了", Toast.LENGTH_SHORT).show()
+        var user = User(100, "")
+        user.ids = 1002
+        user.name = "小明同学"
         result.postValue(user)
         return result
     }
